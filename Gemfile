@@ -15,4 +15,6 @@ gem 'berkshelf'
 # end
 
 gem 'test-kitchen'
+gem 'kitchen-digitalocean'
 gem 'kitchen-vagrant'
+gem 'foodcritic'
