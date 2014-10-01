@@ -13,7 +13,7 @@ platforms:
   - name: centos-6.5
     driver_plugin: digitalocean
     driver_config:
-      image_id: 3448641
+      image_id: 6372108
 
 suites:
   - name: default
