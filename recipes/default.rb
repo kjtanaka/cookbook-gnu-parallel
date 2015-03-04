@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: gnu-parallel
+# Cookbook Name:: opt-gnu-parallel
 # Recipe:: default
 # Author:: Koji Tanaka (<kj.tanaka@gmail.com>)
 #
@@ -20,29 +20,31 @@
 
 include_recipe 'build-essential'
 
-directory node['gnu_parallel']['download_dir']
+directory node['opt_gnu_parallel']['download_dir']
 
-remote_file "#{node['gnu_parallel']['download_dir']}/parallel-#{node['gnu_parallel']['version']}.tar.bz2" do
-  source node['gnu_parallel']['download_url']
+remote_file "#{node['opt_gnu_parallel']['download_dir']}/parallel-#{node['opt_gnu_parallel']['version']}.tar.bz2" do
+  source node['opt_gnu_parallel']['download_url']
   owner "root"
   group "root"
   mode "0644"
+  not_if { ::File.exists?("#{node['opt_gnu_parallel']['prefix']}") }
 end
 
 execute "untar_source" do
   user "root"
-  cwd node['gnu_parallel']['download_dir']
-  command "tar jxvf parallel-#{node['gnu_parallel']['version']}.tar.bz2"
-  creates "parallel-#{node['gnu_parallel']['version']}"
+  cwd node['opt_gnu_parallel']['download_dir']
+  command "tar jxvf parallel-#{node['opt_gnu_parallel']['version']}.tar.bz2"
+  not_if { ::File.exists?("#{node['opt_gnu_parallel']['prefix']}") }
+  creates "parallel-#{node['opt_gnu_parallel']['version']}"
 end
 
 bash "install_parallel" do
   user "root"
-  cwd "#{node['gnu_parallel']['download_dir']}/parallel-#{node['gnu_parallel']['version']}"
+  cwd "#{node['opt_gnu_parallel']['download_dir']}/parallel-#{node['opt_gnu_parallel']['version']}"
   code <<-EOH
-  ./configure --prefix=#{node['gnu_parallel']['prefix']}
+  ./configure --prefix=#{node['opt_gnu_parallel']['prefix']}
   make
   make install
   EOH
-  creates node['gnu_parallel']['prefix']
+  creates node['opt_gnu_parallel']['prefix']
 end

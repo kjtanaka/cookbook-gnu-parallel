@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-directory "#{node['gnu_parallel']['modulefile_dir']}" do
+directory "#{node['opt_gnu_parallel']['modulefile_dir']}" do
   owner "root"
   group "root"
   mode "0755"
@@ -26,16 +26,16 @@ directory "#{node['gnu_parallel']['modulefile_dir']}" do
   action :create
 end
 
-template "#{node['gnu_parallel']['modulefile_dir']}/#{node['gnu_parallel']['version']}" do
+template "#{node['opt_gnu_parallel']['modulefile_dir']}/#{node['opt_gnu_parallel']['version']}" do
   source "modulefile.erb"
   variables(
-    :prefix => node['gnu_parallel']['prefix']
+    :prefix => node['opt_gnu_parallel']['prefix']
   )
 end
 
-template "#{node['gnu_parallel']['modulefile_dir']}/.version" do
+template "#{node['opt_gnu_parallel']['modulefile_dir']}/.version" do
   source "dot.version.erb"
   variables(
-    :default_version => node['gnu_parallel']['default_version']
+    :default_version => node['opt_gnu_parallel']['default_version']
   )
 end

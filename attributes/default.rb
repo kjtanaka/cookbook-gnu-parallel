@@ -1,9 +1,9 @@
-VERSION="20140722"
-default['gnu_parallel']['version'] = VERSION
-default['gnu_parallel']['download_dir'] = "/root/source"
-default['gnu_parallel']['download_url'] = "http://ftp.gnu.org/gnu/parallel/parallel-#{VERSION}.tar.bz2"
-default['gnu_parallel']['prefix'] = "/opt/parallel-#{VERSION}"
+VERSION="20150222"
+default['opt_gnu_parallel']['version'] = VERSION
+default['opt_gnu_parallel']['download_dir'] = "/tmp"
+default['opt_gnu_parallel']['download_url'] = "http://ftp.gnu.org/gnu/parallel/parallel-#{VERSION}.tar.bz2"
+default['opt_gnu_parallel']['prefix'] = "/opt/parallel-#{VERSION}"
 
 # Environment Modules
-default['gnu_parallel']['default_version'] = VERSION
-default['gnu_parallel']['modulefile_dir'] = "/opt/modules-3.2.10/Modules/3.2.10/modulefiles/parallel"
+default['opt_gnu_parallel']['default_version'] = VERSION
+default['opt_gnu_parallel']['modulefile_dir'] = "/opt/Modules/3.2.10/modulefiles/parallel"
