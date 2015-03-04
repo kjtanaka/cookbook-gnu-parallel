@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-directory "#{node['opt_gnu_parallel']['modulefile_dir']}" do
+directory node['opt_gnu_parallel']['modulefile_dir'] do
   owner "root"
   group "root"
   mode "0755"

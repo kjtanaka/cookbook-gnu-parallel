@@ -27,14 +27,14 @@ remote_file "#{node['opt_gnu_parallel']['download_dir']}/parallel-#{node['opt_gn
   owner "root"
   group "root"
   mode "0644"
-  not_if { ::File.exists?("#{node['opt_gnu_parallel']['prefix']}") }
+  not_if { ::File.exists?(node['opt_gnu_parallel']['prefix']) }
 end
 
 execute "untar_source" do
   user "root"
   cwd node['opt_gnu_parallel']['download_dir']
   command "tar jxvf parallel-#{node['opt_gnu_parallel']['version']}.tar.bz2"
-  not_if { ::File.exists?("#{node['opt_gnu_parallel']['prefix']}") }
+  not_if { ::File.exists?(node['opt_gnu_parallel']['prefix']) }
   creates "parallel-#{node['opt_gnu_parallel']['version']}"
 end
 
